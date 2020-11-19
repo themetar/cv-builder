@@ -1,5 +1,6 @@
 import './App.css';
 import {Component} from "react";
+import Section from "./components/Section";
 
 class App extends Component {
   constructor() {
@@ -23,20 +24,8 @@ class App extends Component {
 
     return (
       <div className="App">
-        <section>
-          <h1>{personal.name}</h1>
-          <p>{personal.about}</p>
-        </section>
-        <section>
-          <h2>Skills</h2>
-          <ul>
-            {skills.map((skill, i) => {
-              return (
-                <li>{skill}</li>
-              );
-            })}
-          </ul>
-        </section>
+        <Section type="personal" data={personal} />
+        <Section type="skills" data={skills} />
       </div>
     );
   }
