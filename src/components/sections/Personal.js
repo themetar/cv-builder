@@ -1,6 +1,19 @@
 import {Component} from "react";
 
 class Personal extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleNameChange = this.handleChange.bind(this, "name");
+    this.handleAboutChange = this.handleChange.bind(this, "about");
+  }
+
+  handleChange(field, event) {
+    const data = {...this.props.data};
+    data[field] = event.target.value;
+    this.props.onChange(data);
+  }
+
   render() {
     const {mode, data} = this.props;
 
@@ -15,8 +28,8 @@ class Personal extends Component {
     // if editing
     const inputs = (
       <div>
-        <h1>TODO</h1>
-        <p>TODO</p>
+        <input type="text" value={data.name} onChange={this.handleNameChange} />
+        <input type="text" value={data.about} onChange={this.handleAboutChange} />
       </div>
     );
 

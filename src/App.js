@@ -17,6 +17,13 @@ class App extends Component {
         ],
       },
     };
+
+    this.handleUpdate = this.handleUpdate.bind(this);
+  }
+
+  handleUpdate(section, data) {
+    const cv = {...this.state.cv, [section]: data}
+    this.setState({cv: cv});
   }
 
   render() {
@@ -24,7 +31,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Section type="personal" data={personal} />
+        <Section type="personal" data={personal} onUpdate={this.handleUpdate} />
         <Section type="skills" data={skills} />
       </div>
     );
