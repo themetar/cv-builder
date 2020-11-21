@@ -1,5 +1,9 @@
 import {Component} from "react";
 
+/*
+  Renders the personal info section elements.
+  On input, sends data via callback.
+*/
 class Personal extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +21,7 @@ class Personal extends Component {
   render() {
     const {mode, data} = this.props;
 
-    // if displaying
+    // when displaying
     const show = (
       <div>
         <h1>{data.name}</h1>
@@ -25,7 +29,7 @@ class Personal extends Component {
       </div>
     );
 
-    // if editing
+    // when editing
     const inputs = (
       <div>
         <input type="text" value={data.name} onChange={this.handleNameChange} />

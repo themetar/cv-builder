@@ -4,7 +4,9 @@ import Section from "./components/Section";
 
 class App extends Component {
   constructor() {
-    super()
+    super();
+
+    // All of the CV data is held in root state, and propagated to components
     this.state = {
       cv: {
         personal: {
@@ -21,6 +23,12 @@ class App extends Component {
     this.handleUpdate = this.handleUpdate.bind(this);
   }
 
+  /*
+    Update callback. Icorporates updates from edited sections into state.cv
+
+    section - Which section the data is for
+    data - New data
+  */
   handleUpdate(section, data) {
     const cv = {...this.state.cv, [section]: data}
     this.setState({cv: cv});
