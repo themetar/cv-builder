@@ -67,7 +67,7 @@ class Section extends Component {
     return (
       <section>
         {type === "personal" && <Personal data={data} mode={mode} onChange={this.handleChange} />}
-        {type === "skills" && <Skills data={data} mode={mode} />}
+        {type === "skills" && <Skills data={data} mode={mode} onChange={this.handleChange} />}
         <EditActions mode={mode} onAction={this.handleAction}/>
       </section>
     );

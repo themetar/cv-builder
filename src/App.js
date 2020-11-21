@@ -40,7 +40,7 @@ class App extends Component {
     return (
       <div className="App">
         <Section type="personal" data={personal} onUpdate={this.handleUpdate} />
-        <Section type="skills" data={skills} />
+        <Section type="skills" data={skills} onUpdate={this.handleUpdate} />
       </div>
     );
   }
