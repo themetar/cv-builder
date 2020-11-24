@@ -17,6 +17,14 @@ class App extends Component {
           "Web development",
           "Brick-laying",
         ],
+        education: [
+          {
+            from: "2016",
+            until: "2020",
+            where: "School Name",
+            what: "Degree title",
+          },
+        ],
       },
     };
 
@@ -35,12 +43,13 @@ class App extends Component {
   }
 
   render() {
-    const {personal, skills} = this.state.cv;
+    const {personal, skills, education} = this.state.cv;
 
     return (
       <div className="App">
         <Section type="personal" data={personal} onUpdate={this.handleUpdate} />
         <Section type="skills" data={skills} onUpdate={this.handleUpdate} />
+        <Section type="education" data={education} onUpdate={this.handleUpdate} />
       </div>
     );
   }
