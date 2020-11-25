@@ -7,26 +7,41 @@ class Education extends Component {
   constructor(props) {
     super(props);
 
-    this.handleFrom = this.handleChange.bind(this, "from");
-    this.handleUntil = this.handleChange.bind(this, "until");
-    this.handleWhere = this.handleChange.bind(this, "where");
-    this.handleWhat = this.handleChange.bind(this, "what");
+    this.inputHandlers = this.props.data.map((_, index) => ({
+      handleFrom:   this.handleChange.bind(this, index, "from"),
+      handleUntil:  this.handleChange.bind(this, index, "until"),
+      handleWhere:  this.handleChange.bind(this, index, "where"),
+      handleWhat:   this.handleChange.bind(this, index, "what"),
+    }));
   }
 
-  handleChange(field, event) {
+  handleChange(index, field, event) {
     const data = this.props.data.slice(); // copy array
-    data[0] = {...data[0]}; // copy entry
-    data[0][field] = event.target.value; // change field
+    data[index] = {...data[index]}; // copy entry
+    data[index][field] = event.target.value; // change field
     this.props.onChange(data);
   }
 
   render() {
     const {mode} = this.props;
-    const {from, until, where, what} = this.props.data[0]; // first entry
 
-    const output = mode === "show" ? (
-      // when displaying
+    const mapFunc = mode === "show" ? this.mapShow : this.mapEdit;
+
+    return (
       <div>
+        {this.props.data.map(mapFunc)}
+      </div>
+    );
+  }
+
+  /*
+    Render show elements
+  */
+  mapShow = (entry, index) => {
+    const {from, until, where, what} = entry;
+
+    return (
+      <div key={index}>
         <p>
           <span>{from}</span>
           <span>{until}</span>  
@@ -36,17 +51,25 @@ class Education extends Component {
           {what}
         </p>
       </div>
-    ) : (
-      // when editing
-      <div>
-        <input type="number" min="1900" value={from} onChange={this.handleFrom}/>
-        <input type="number" min="1900" value={until} onChange={this.handleUntil}/>
-        <input type="text" value={where} onChange={this.handleWhere}/>
-        <input type="text" value={what} onChange={this.handleWhat}/>
+    );
+  }
+
+  /*
+    Render edit  elements
+  */
+  mapEdit = (entry, index) => {
+    const {from, until, where, what} = entry;
+
+    const {handleFrom, handleUntil, handleWhere, handleWhat} = this.inputHandlers[index];
+
+    return (
+      <div key={index}>
+        <input type="number" min="1900" value={from} onChange={handleFrom}/>
+        <input type="number" min="1900" value={until} onChange={handleUntil}/>
+        <input type="text" value={where} onChange={handleWhere}/>
+        <input type="text" value={what} onChange={handleWhat}/>
       </div>
     );
-
-    return output;
   }
 }
 
