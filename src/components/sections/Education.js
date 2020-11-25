@@ -7,12 +7,10 @@ class Education extends Component {
   constructor(props) {
     super(props);
 
-    this.inputHandlers = this.props.data.map((_, index) => ({
-      handleFrom:   this.handleChange.bind(this, index, "from"),
-      handleUntil:  this.handleChange.bind(this, index, "until"),
-      handleWhere:  this.handleChange.bind(this, index, "where"),
-      handleWhat:   this.handleChange.bind(this, index, "what"),
-    }));
+    this.inputHandlers = [];
+
+    this.handleAdd = this.handleAdd.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
 
   handleChange(index, field, event) {
@@ -22,14 +20,60 @@ class Education extends Component {
     this.props.onChange(data);
   }
 
+  handleAdd() {
+    const data = this.props.data.slice(); // copy array
+
+    const year = (new Date()).getFullYear();
+
+    // add new entry
+    data.push({
+      from: year,
+      until: year,
+      where: "Enter School name",
+      what: "Enter Degree",
+    });
+
+    // send data
+    this.props.onChange(data);
+  }
+
+  handleRemove() {
+    const data = this.props.data.slice(); // copy array
+    if (data.length > 1) {
+      data.pop(); // remove last
+      // send data
+      this.props.onChange(data);
+    }
+  }
+
   render() {
     const {mode} = this.props;
+    const entries = this.props.data;
+
+    // add handlers if needed
+    for(var i = this.inputHandlers.length; i < entries.length; i++) {
+      this.inputHandlers.push({
+        handleFrom:   this.handleChange.bind(this, i, "from"),
+        handleUntil:  this.handleChange.bind(this, i, "until"),
+        handleWhere:  this.handleChange.bind(this, i, "where"),
+        handleWhat:   this.handleChange.bind(this, i, "what"),
+      });
+    }
+
+    // remove handlers if extra
+    this.inputHandlers.splice(entries.length, this.inputHandlers.length - entries.length);
 
     const mapFunc = mode === "show" ? this.mapShow : this.mapEdit;
 
     return (
       <div>
-        {this.props.data.map(mapFunc)}
+        {entries.map(mapFunc)}
+        {mode === "edit" && (
+          <div>
+            <button onClick={this.handleAdd}>Add</button>
+            {entries.length > 1 && <button onClick={this.handleRemove}>Remove</button>}
+          </div>
+        )}
       </div>
     );
   }
