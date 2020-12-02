@@ -12,6 +12,20 @@ class App extends Component {
         personal: {
           name: "Your Name",
           about: "About yourself",
+          contactList: [
+            {
+              type: "email", value: "user@example.org",
+            },
+            {
+              type: "address", value: "East Street 100, SW",
+            },
+            {
+              type: "tel", value: "555-666-444",
+            },
+            {
+              type: "web", value: "http://example.org",
+            },
+          ],
         },
         skills: [
           "Web development",
