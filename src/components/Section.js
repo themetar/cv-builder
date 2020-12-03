@@ -2,6 +2,7 @@ import {Component} from "react";
 import Personal from "./sections/Personal";
 import Skills from "./sections/Skills";
 import Education from "./sections/Education";
+import OtherSkills from "./sections/OtherSkills";
 import EditActions from "./EditActions";
 
 /*
@@ -70,6 +71,7 @@ class Section extends Component {
         {type === "personal" && <Personal data={data} mode={mode} onChange={this.handleChange} />}
         {type === "skills" && <Skills data={data} mode={mode} onChange={this.handleChange} />}
         {type === "education" && <Education data={data} mode={mode} onChange={this.handleChange} />}
+        {type === "otherSkills" && <OtherSkills data={data} mode={mode} onChange={this.handleChange} />}
         <EditActions mode={mode} onAction={this.handleAction}/>
       </section>
     );
