@@ -32,7 +32,7 @@ class Section extends Component {
   */
   handleAction(action) {
     const {onUpdate} = this.props;
-    const {type} = this.props;
+    const {id} = this.props;
 
     if (action === "edit") {
       // change the display mode to editing
@@ -49,8 +49,7 @@ class Section extends Component {
       /* send state data to parent component,
          where it will be merged with rest of the CV,
          and passed back down as prop */
-      // TODO: use id or sectionName other identifier (add to props) instead of 'type'
-      onUpdate(type, this.state.data);
+      onUpdate(id, this.state.data);
     }
   }
 

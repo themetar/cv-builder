@@ -11,6 +11,7 @@ class App extends Component {
       cv: [
         {
           type: "personal",
+          id: "personal",
           data: {
             name: "Your Name",
             about: "About yourself",
@@ -32,6 +33,7 @@ class App extends Component {
         },
         {
           type: "skills",
+          id: "skills",
           title: "Skills",
           data: [
             "Web development",
@@ -40,6 +42,7 @@ class App extends Component {
         },
         {
           type: "chronicle",
+          id: "education",
           title: "Education",
           data: [
             {
@@ -52,6 +55,7 @@ class App extends Component {
         },
         {
           type: "otherSkills",
+          id: "other",
           title: "Other Skills",
           data: [
             {
@@ -72,9 +76,9 @@ class App extends Component {
     section - Which section the data is for
     data - New data
   */
-  handleUpdate(section, data) {
+  handleUpdate(sectionId, data) {
     const cv = this.state.cv.slice();
-    cv[cv.findIndex(entry => entry.type === section)].data = data;
+    cv[cv.findIndex(entry => entry.id === sectionId)].data = data;
     this.setState({cv: cv});
   }
 
@@ -84,7 +88,7 @@ class App extends Component {
     return (
       <div className="App">
         {sections.map(section => (
-          <Section key={section.type + section.title} type={section.type} title={section.title} data={section.data} onUpdate={this.handleUpdate} />
+          <Section key={section.id} id={section.id} type={section.type} title={section.title} data={section.data} onUpdate={this.handleUpdate} />
         ))}
       </div>
     );
