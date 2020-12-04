@@ -8,44 +8,59 @@ class App extends Component {
 
     // All of the CV data is held in root state, and propagated to components
     this.state = {
-      cv: {
-        personal: {
-          name: "Your Name",
-          about: "About yourself",
-          contactList: [
-            {
-              type: "email", value: "user@example.org",
-            },
-            {
-              type: "address", value: "East Street 100, SW",
-            },
-            {
-              type: "tel", value: "555-666-444",
-            },
-            {
-              type: "web", value: "http://example.org",
-            },
+      cv: [
+        {
+          type: "personal",
+          data: {
+            name: "Your Name",
+            about: "About yourself",
+            contactList: [
+              {
+                type: "email", value: "user@example.org",
+              },
+              {
+                type: "address", value: "East Street 100, SW",
+              },
+              {
+                type: "tel", value: "555-666-444",
+              },
+              {
+                type: "web", value: "http://example.org",
+              },
+            ],
+          },
+        },
+        {
+          type: "skills",
+          title: "Skills",
+          data: [
+            "Web development",
+            "Brick-laying",
           ],
         },
-        skills: [
-          "Web development",
-          "Brick-laying",
-        ],
-        education: [
-          {
-            from: "2016",
-            until: "2020",
-            where: "School Name",
-            what: "Degree title",
-          },
-        ],
-        otherSkills: [
-          {
-            topic: "Bilingual",
-            details: "I speak Italian"
-          },
-        ],
-      },
+        {
+          type: "education",
+          title: "Education",
+          data: [
+            {
+              from: "2016",
+              until: "2020",
+              where: "School Name",
+              what: "Degree title",
+            },
+          ]
+        },
+        {
+          type: "otherSkills",
+          title: "Other Skills",
+          data: [
+            {
+              topic: "Bilingual",
+              details: "I speak Italian"
+            },
+          ]
+        },
+      ],
     };
 
     this.handleUpdate = this.handleUpdate.bind(this);
@@ -58,19 +73,19 @@ class App extends Component {
     data - New data
   */
   handleUpdate(section, data) {
-    const cv = {...this.state.cv, [section]: data}
+    const cv = this.state.cv.slice();
+    cv[cv.findIndex(entry => entry.type === section)].data = data;
     this.setState({cv: cv});
   }
 
   render() {
-    const {personal, skills, education, otherSkills} = this.state.cv;
+    const sections = this.state.cv;
 
     return (
       <div className="App">
-        <Section type="personal" data={personal} onUpdate={this.handleUpdate} />
-        <Section type="skills" title="Skills" data={skills} onUpdate={this.handleUpdate} />
-        <Section type="education" title="Education" data={education} onUpdate={this.handleUpdate} />
-        <Section type="otherSkills" title="Other Skills" data={otherSkills} onUpdate={this.handleUpdate} />
+        {sections.map(section => (
+          <Section key={section.type + section.title} type={section.type} title={section.title} data={section.data} onUpdate={this.handleUpdate} />
+        ))}
       </div>
     );
   }
