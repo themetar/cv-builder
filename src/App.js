@@ -54,6 +54,20 @@ class App extends Component {
           ]
         },
         {
+          type: "chronicle",
+          id: "work",
+          title: "Work",
+          data: [
+            {
+              from: "2018",
+              until: "2019",
+              where: "Business Company",
+              what: "Intern",
+              description: "Doing business",
+            },
+          ]
+        },
+        {
           type: "otherSkills",
           id: "other",
           title: "Other Skills",
