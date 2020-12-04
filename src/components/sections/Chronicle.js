@@ -1,9 +1,10 @@
 import {Component} from "react";
 
 /*
-  Renders (a single entry of) the person's education history.
+  Renders a history of time periods.
+  Each entry has a start year, an end year, location, title, and an optional description text.
 */
-class Education extends Component {
+class Chronicle extends Component {
   constructor(props) {
     super(props);
 
@@ -29,8 +30,9 @@ class Education extends Component {
     data.push({
       from: year,
       until: year,
-      where: "Enter School name",
-      what: "Enter Degree",
+      where: "Enter Organization name",
+      what: "Enter Gained Title",
+      description: "",
     });
 
     // send data
@@ -57,6 +59,7 @@ class Education extends Component {
         handleUntil:  this.handleChange.bind(this, i, "until"),
         handleWhere:  this.handleChange.bind(this, i, "where"),
         handleWhat:   this.handleChange.bind(this, i, "what"),
+        handleDescription:   this.handleChange.bind(this, i, "description"),
       });
     }
 
@@ -82,7 +85,7 @@ class Education extends Component {
     Render show elements
   */
   mapShow = (entry, index) => {
-    const {from, until, where, what} = entry;
+    const {from, until, where, what, description} = entry;
 
     return (
       <div key={index}>
@@ -94,17 +97,18 @@ class Education extends Component {
         <p>
           {what}
         </p>
-      </div>
+        {description && <p>{description}</p>}
+      </div>  
     );
   }
 
   /*
-    Render edit  elements
+    Render edit elements
   */
   mapEdit = (entry, index) => {
-    const {from, until, where, what} = entry;
+    const {from, until, where, what, description} = entry;
 
-    const {handleFrom, handleUntil, handleWhere, handleWhat} = this.inputHandlers[index];
+    const {handleFrom, handleUntil, handleWhere, handleWhat, handleDescription} = this.inputHandlers[index];
 
     return (
       <div key={index}>
@@ -112,9 +116,10 @@ class Education extends Component {
         <input type="number" min="1900" value={until} onChange={handleUntil}/>
         <input type="text" value={where} onChange={handleWhere}/>
         <input type="text" value={what} onChange={handleWhat}/>
+        <input type="text" value={description} placeholder="Optional details" onChange={handleDescription}/>
       </div>
     );
   }
 }
 
-export default Education;
+export default Chronicle;

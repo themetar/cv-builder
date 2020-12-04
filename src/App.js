@@ -39,7 +39,7 @@ class App extends Component {
           ],
         },
         {
-          type: "education",
+          type: "chronicle",
           title: "Education",
           data: [
             {
