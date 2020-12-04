@@ -61,7 +61,6 @@ class OtherSkills extends Component {
 
     return (
       <div>
-        <h2>Other Skills</h2>
         <div>
         {
           mode === "show" && data.map(this.showMap)

@@ -63,11 +63,12 @@ class Section extends Component {
 
   render() {
     const {mode} = this.state
-    const {type} = this.props;
+    const {type, title} = this.props;
     const {data} = mode === "show" ? this.props : this.state;
 
     return (
       <section>
+        {title && <h2>{title}</h2>}
         {type === "personal" && <Personal data={data} mode={mode} onChange={this.handleChange} />}
         {type === "skills" && <Skills data={data} mode={mode} onChange={this.handleChange} />}
         {type === "education" && <Education data={data} mode={mode} onChange={this.handleChange} />}

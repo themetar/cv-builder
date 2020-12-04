@@ -67,7 +67,6 @@ class Education extends Component {
 
     return (
       <div>
-        <h2>Education</h2>
         {entries.map(mapFunc)}
         {mode === "edit" && (
           <div>

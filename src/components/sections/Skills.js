@@ -39,10 +39,7 @@ class Skills extends Component {
     ); 
 
     return (
-      <div>
-        <h2>Skills</h2>
-        {mode === "show" ? show : edit}
-      </div>
+      mode === "show" ? show : edit
     );
   }
 }
