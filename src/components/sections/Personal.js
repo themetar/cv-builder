@@ -41,9 +41,9 @@ class Personal extends Component {
     // when displaying
     const show = (
       <div>
-        <h1>{data.name}</h1>
-        <p>{data.about}</p>
-        <ul>
+        <h1 className="bio-name">{data.name}</h1>
+        <p className="bio-about">{data.about}</p>
+        <ul className="contact-info">
         {
           data.contactList.map((c, i) => {
             if (c.type === "address") return <li key={i}>{c.value}</li>;
@@ -59,9 +59,9 @@ class Personal extends Component {
     // when editing
     const inputs = (
       <div>
-        <input type="text" value={data.name} onChange={this.handleNameChange} />
-        <input type="text" value={data.about} onChange={this.handleAboutChange} />
-        <ul>
+        <input type="text" value={data.name} onChange={this.handleNameChange} className="bio-name" />
+        <input type="text" value={data.about} onChange={this.handleAboutChange} className="bio-about" />
+        <ul className="contact-info">
         {
           data.contactList.map((c, i) => {
             return (

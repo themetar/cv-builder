@@ -1,0 +1,23 @@
+/**/
+input { width: 100%; }
+/**/
+
+.bio-name,
+.bio-about {
+  display: block;
+}
+
+.contact-info {
+  padding-left: 0;
+  list-style-type: none;
+  columns: 2;
+}
+
+.contact-info li {
+  display: flex;
+  margin-bottom: .6em;
+}
+
+.contact-info select {
+  margin-right: 1rem;
+}
