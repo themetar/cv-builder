@@ -24,7 +24,7 @@ class Skills extends Component {
 
     // when displaying
     const show = (
-      <ul>
+      <ul className="skills">
         {data.map(skill => {
           return (
             <li key={skill}>{skill}</li>
@@ -35,7 +35,7 @@ class Skills extends Component {
 
     // when editing
     const edit = (
-      <textarea value={data.join(",")} onChange={this.handleChange} />
+      <textarea value={data.join(",")} onChange={this.handleChange} className="skills-input" />
     ); 
 
     return (

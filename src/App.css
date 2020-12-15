@@ -1,5 +1,11 @@
 /**/
-input { width: 100%; }
+input,
+textarea { width: 100%; }
+
+textarea {
+  font: inherit;
+  resize: vertical;
+}
 /**/
 
 .bio-name,
@@ -20,4 +26,22 @@ input { width: 100%; }
 
 .contact-info select {
   margin-right: 1rem;
+}
+
+.skills {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.skills li {
+  display: inline-block;
+  margin: .5rem;
+  padding: .5em 1em;
+  border-radius: .5em;
+  background-color: black;
+  color: white;
+}
+
+.skills-input {
+  margin-bottom: 1rem;
 }
