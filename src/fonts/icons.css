@@ -1,0 +1,30 @@
+@font-face {
+  font-family: Icomoon;
+  src: url(./icomoon.woff) format('woff'),
+        url(./icomoon.ttf) format('truetype');
+}
+
+.icon-pencil:before {
+  font-family: Icomoon;
+  content: "\e905";
+}
+
+.icon-undo:before {
+  font-family: Icomoon;
+  content: "\e965";
+}
+
+.icon-plus:before {
+  font-family: Icomoon;
+  content: "\ea0a";
+}
+
+.icon-cross:before {
+  font-family: Icomoon;
+  content: "\ea0f";
+}
+
+.icon-checkmark:before {
+  font-family: Icomoon;
+  content: "\ea10";
+}

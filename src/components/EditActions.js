@@ -16,9 +16,24 @@ class EditActions extends Component {
 
     return (
       <div>
-        {mode === "show" && <button data-action="edit" onClick={this.handleClick}>Edit</button>}
-        {mode !== "show" && <button data-action="save" onClick={this.handleClick}>Save</button>}
-        {mode !== "show" && <button data-action="cancel" onClick={this.handleClick}>Cancel</button>}
+        {mode === "show" &&
+            <button data-action="edit" onClick={this.handleClick}>
+              <span aria-hidden="true" className="icon-pencil"></span>
+              <span className="screen-reader-text">Edit</span>
+            </button>
+        }
+        {mode !== "show" &&
+            <button data-action="save" onClick={this.handleClick}>
+              <span aria-hidden="true" className="icon-checkmark"></span>
+              <span className="screen-reader-text">Save</span>
+            </button>
+        }
+        {mode !== "show" &&
+            <button data-action="cancel" onClick={this.handleClick}>
+              <span aria-hidden="true" className="icon-undo"></span>
+              <span className="screen-reader-text">Cancel</span>
+            </button>
+        }
         {mode !== "show" && <button data-action="delete" onClick={this.handleClick}>Delete</button>}
       </div>
     )

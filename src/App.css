@@ -20,6 +20,12 @@ h2 {
 .m-b-1 {
   margin-bottom: 1rem;
 }
+
+.screen-reader-text {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
 /**/
 
 .bio-name,
