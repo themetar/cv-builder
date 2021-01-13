@@ -1,10 +1,24 @@
 /**/
 input,
-textarea { width: 100%; }
+textarea {
+  box-sizing: border-box;
+  width: 100%;
+}
 
 textarea {
   font: inherit;
   resize: vertical;
+}
+
+h2 {
+  margin-top: 2em;
+  margin-bottom: 0;
+}
+/**/
+
+/* utilities */
+.m-b-1 {
+  margin-bottom: 1rem;
 }
 /**/
 
@@ -44,4 +58,34 @@ textarea {
 
 .skills-input {
   margin-bottom: 1rem;
+}
+
+.chrono-entry {
+  padding-top: 1rem;
+}
+
+.year-from::after {
+  content: " - ";
+}
+
+.year-until {
+  margin-right: 2em;
+}
+
+.organization {
+  font-style: italic;
+}
+
+.gained-title {
+  font-weight: 600;
+}
+
+.edit-when-where {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 1rem;
+}
+
+.edit-when-where > input[type="number"]{
+  width: 10ch;
 }

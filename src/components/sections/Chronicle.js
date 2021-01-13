@@ -88,13 +88,13 @@ class Chronicle extends Component {
     const {from, until, where, what, description} = entry;
 
     return (
-      <div key={index}>
+      <div key={index} className="chrono-entry">
         <p>
-          <span>{from}</span>
-          <span>{until}</span>  
-          <span> {where}</span>
+          <span className="year-from">{from}</span>
+          <span className="year-until">{until}</span>  
+          <span className="organization">{where}</span>
         </p>
-        <p>
+        <p className="gained-title">
           {what}
         </p>
         {description && <p>{description}</p>}
@@ -111,12 +111,14 @@ class Chronicle extends Component {
     const {handleFrom, handleUntil, handleWhere, handleWhat, handleDescription} = this.inputHandlers[index];
 
     return (
-      <div key={index}>
-        <input type="number" min="1900" value={from} onChange={handleFrom}/>
-        <input type="number" min="1900" value={until} onChange={handleUntil}/>
-        <input type="text" value={where} onChange={handleWhere}/>
-        <input type="text" value={what} onChange={handleWhat}/>
-        <input type="text" value={description} placeholder="Optional details" onChange={handleDescription}/>
+      <div key={index} className="chrono-entry">
+        <div className="edit-when-where m-b-1">
+          <input type="number" min="1900" value={from} onChange={handleFrom}/>
+          <input type="number" min="1900" value={until} onChange={handleUntil}/>
+          <input type="text" value={where} onChange={handleWhere}/>
+        </div>
+        <input type="text" value={what} onChange={handleWhat} className="m-b-1"/>
+        <input type="text" value={description} placeholder="Optional details" onChange={handleDescription} className="m-b-1"/>
       </div>
     );
   }
