@@ -1,4 +1,5 @@
 import {Component} from "react";
+import './EditActions.css';
 
 class EditActions extends Component {
   constructor(props) {
@@ -15,26 +16,26 @@ class EditActions extends Component {
     const {mode} = this.props;
 
     return (
-      <div>
+      <div className="EditActions">
         {mode === "show" &&
-            <button data-action="edit" onClick={this.handleClick}>
+            <button data-action="edit" onClick={this.handleClick} className="edit-button">
               <span aria-hidden="true" className="icon-pencil"></span>
               <span className="screen-reader-text">Edit</span>
             </button>
         }
         {mode !== "show" &&
-            <button data-action="save" onClick={this.handleClick}>
+            <button data-action="save" onClick={this.handleClick} className="edit-button">
               <span aria-hidden="true" className="icon-checkmark"></span>
               <span className="screen-reader-text">Save</span>
             </button>
         }
         {mode !== "show" &&
-            <button data-action="cancel" onClick={this.handleClick}>
+            <button data-action="cancel" onClick={this.handleClick} className="edit-button">
               <span aria-hidden="true" className="icon-undo"></span>
               <span className="screen-reader-text">Cancel</span>
             </button>
         }
-        {mode !== "show" && <button data-action="delete" onClick={this.handleClick}>Delete</button>}
+        {mode !== "show" && <button data-action="delete" onClick={this.handleClick} className="edit-button">Delete</button>}
       </div>
     )
   }
