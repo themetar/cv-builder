@@ -28,6 +28,14 @@ h2 {
 }
 /**/
 
+.App {
+  max-width: 1440px;
+  margin: 0 auto;
+  /* 'margins' : */
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
 .bio-name,
 .bio-about {
   display: block;
