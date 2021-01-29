@@ -8,7 +8,7 @@ class EditActions extends Component {
   }
 
   handleClick(event) {
-    this.props.onAction(event.target.dataset.action);
+    this.props.onAction(event.currentTarget.dataset.action);
   }
 
   render() {
