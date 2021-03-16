@@ -71,8 +71,14 @@ class OtherSkills extends Component {
         </div>
         {mode === "edit" && (
           <div>
-            <button onClick={this.handleAdd}>Add</button>
-            {data.length > 1 && <button onClick={this.handleRemove}>Remove</button>}
+            <button onClick={this.handleAdd}>
+              <span aria-hidden="true" className="icon-plus"></span>
+              <span className="screen-reader-text">Add</span>
+            </button>
+            {data.length > 1 && <button onClick={this.handleRemove}>
+                <span aria-hidden="true" className="icon-cross"></span>
+                <span className="screen-reader-text">Remove</span>
+              </button>}
           </div>
         )}
       </div>

@@ -73,8 +73,14 @@ class Chronicle extends Component {
         {entries.map(mapFunc)}
         {mode === "edit" && (
           <div>
-            <button onClick={this.handleAdd}>Add</button>
-            {entries.length > 1 && <button onClick={this.handleRemove}>Remove</button>}
+            <button onClick={this.handleAdd}>
+              <span aria-hidden="true" className="icon-plus"></span>
+              <span className="screen-reader-text">Add</span>
+            </button>
+            {entries.length > 1 && <button onClick={this.handleRemove}>
+                <span aria-hidden="true" className="icon-cross"></span>
+                <span className="screen-reader-text">Remove</span>
+              </button>}
           </div>
         )}
       </div>
