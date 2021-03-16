@@ -1,4 +1,5 @@
 import {Component} from "react";
+import AddRemoveBtns from "../CollectionButtons";
 
 /*
   Displays a collection of topics and information about them
@@ -70,16 +71,7 @@ class OtherSkills extends Component {
         }
         </div>
         {mode === "edit" && (
-          <div>
-            <button onClick={this.handleAdd}>
-              <span aria-hidden="true" className="icon-plus"></span>
-              <span className="screen-reader-text">Add</span>
-            </button>
-            {data.length > 1 && <button onClick={this.handleRemove}>
-                <span aria-hidden="true" className="icon-cross"></span>
-                <span className="screen-reader-text">Remove</span>
-              </button>}
-          </div>
+          <AddRemoveBtns handleAdd={this.handleAdd} handleRemove={this.handleRemove} count={data.length} />
         )}
       </div>
     );

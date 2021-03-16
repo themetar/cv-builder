@@ -1,4 +1,5 @@
 import {Component} from "react";
+import AddRemoveBtns from "../CollectionButtons";
 
 /*
   Renders a history of time periods.
@@ -72,16 +73,7 @@ class Chronicle extends Component {
       <div>
         {entries.map(mapFunc)}
         {mode === "edit" && (
-          <div>
-            <button onClick={this.handleAdd}>
-              <span aria-hidden="true" className="icon-plus"></span>
-              <span className="screen-reader-text">Add</span>
-            </button>
-            {entries.length > 1 && <button onClick={this.handleRemove}>
-                <span aria-hidden="true" className="icon-cross"></span>
-                <span className="screen-reader-text">Remove</span>
-              </button>}
-          </div>
+          <AddRemoveBtns handleAdd={this.handleAdd} handleRemove={this.handleRemove} count={entries.length} />
         )}
       </div>
     );
