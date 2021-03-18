@@ -1,0 +1,26 @@
+.CollectionButtons {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.plus-btn {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 2rem;
+  font-size: 2rem;
+  background-color: lightgreen;
+}
+
+.cross-btn {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  margin-bottom: .5rem;
+  background-color: orangered;
+}
+
+.plus-btn, .cross-btn {
+  border-width: 0;
+  color: white;
+}
