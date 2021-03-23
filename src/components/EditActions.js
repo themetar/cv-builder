@@ -24,7 +24,7 @@ class EditActions extends Component {
             </button>
         }
         {mode !== "show" &&
-            <button data-action="save" onClick={this.handleClick} className="edit-button">
+            <button data-action="save" onClick={this.handleClick} className="edit-button m-b-1/2">
               <span aria-hidden="true" className="icon-checkmark"></span>
               <span className="screen-reader-text">Save</span>
             </button>

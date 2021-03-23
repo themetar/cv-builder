@@ -13,12 +13,14 @@
 .edit-button {
   padding: .2em .4em;
   background-color: transparent;
-  border: none;
+  border: 1px solid whitesmoke;
   border-radius: .2em;
   font-size: 1.4rem;
-  transition: background-color 300ms ease-in;
+  transition: background-color 300ms ease-in,
+              border-color 300ms ease-in;
 }
 
 .edit-button:hover {
   background-color: whitesmoke;
+  border-color: lightgray;
 }
