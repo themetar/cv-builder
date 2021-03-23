@@ -24,13 +24,13 @@ class EditActions extends Component {
             </button>
         }
         {mode !== "show" &&
-            <button data-action="save" onClick={this.handleClick} className="edit-button m-b-1/2">
+            <button data-action="save" onClick={this.handleClick} className="edit-button m-b-1/2 pop-in">
               <span aria-hidden="true" className="icon-checkmark"></span>
               <span className="screen-reader-text">Save</span>
             </button>
         }
         {mode !== "show" &&
-            <button data-action="cancel" onClick={this.handleClick} className="edit-button">
+            <button data-action="cancel" onClick={this.handleClick} className="edit-button pop-in">
               <span aria-hidden="true" className="icon-undo"></span>
               <span className="screen-reader-text">Cancel</span>
             </button>
