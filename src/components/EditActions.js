@@ -35,7 +35,6 @@ class EditActions extends Component {
               <span className="screen-reader-text">Cancel</span>
             </button>
         }
-        {mode !== "show" && <button data-action="delete" onClick={this.handleClick} className="edit-button">Delete</button>}
       </div>
     )
   }
