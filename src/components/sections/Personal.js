@@ -59,8 +59,8 @@ class Personal extends Component {
     // when editing
     const inputs = (
       <div>
-        <input type="text" value={data.name} onChange={this.handleNameChange} className="bio-name" />
-        <input type="text" value={data.about} onChange={this.handleAboutChange} className="bio-about" />
+        <input type="text" value={data.name} onChange={this.handleNameChange} className="bio-name m-b-1" />
+        <input type="text" value={data.about} onChange={this.handleAboutChange} className="bio-about m-b-1" />
         <ul className="contact-info">
         {
           data.contactList.map((c, i) => {

@@ -61,8 +61,8 @@ class OtherSkills extends Component {
     this.inputHandlers.splice(data.length, this.inputHandlers.length - data.length);
 
     return (
-      <div>
-        <div>
+      <div className="OtherSkills">
+        <div className="grid m-b-2">
         {
           mode === "show" && data.map(this.showMap)
         }
@@ -89,7 +89,7 @@ class OtherSkills extends Component {
   editMap(skill, index) {
     return (
       <div key={index}>
-        <input type="text" value={skill.topic} onChange={this.inputHandlers[index].handleTopic} />
+        <input type="text" value={skill.topic} onChange={this.inputHandlers[index].handleTopic} className="m-b-1/2" />
         <textarea value={skill.details} onChange={this.inputHandlers[index].handleDetails}/>
       </div>
     );

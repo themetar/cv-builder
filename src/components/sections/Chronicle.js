@@ -116,7 +116,7 @@ class Chronicle extends Component {
           <input type="text" value={where} onChange={handleWhere}/>
         </div>
         <input type="text" value={what} onChange={handleWhat} className="m-b-1"/>
-        <input type="text" value={description} placeholder="Optional details" onChange={handleDescription} className="m-b-1"/>
+        <input type="text" value={description} placeholder="Optional details" onChange={handleDescription}/>
       </div>
     );
   }
