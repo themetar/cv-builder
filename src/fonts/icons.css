@@ -28,3 +28,23 @@
   font-family: Icomoon;
   content: "\ea10";
 }
+
+.icon-phone:before {
+  font-family: Icomoon;
+  content: "\e942";
+}
+
+.icon-envelope:before {
+  font-family: Icomoon;
+  content: "\e945";
+}
+
+.icon-map:before {
+  font-family: Icomoon;
+  content: "\e94b";
+}
+
+.icon-earth:before {
+  font-family: Icomoon;
+  content: "\e9ca";
+}

@@ -46,10 +46,10 @@ class Personal extends Component {
         <ul className="contact-info">
         {
           data.contactList.map((c, i) => {
-            if (c.type === "address") return <li key={i}>{c.value}</li>;
-            if (c.type === "tel") return <li key={i}><a href={`tel:${c.value}`}>{c.value}</a></li>;
-            if (c.type === "web") return <li key={i}><a href={c.value}>{c.value.replace(/(http|https):\/\//, '')}</a></li>;
-            /* if (c.type === "email") */ return <li key={i}><a href={`mailto:${c.value}`}>{c.value}</a></li>;
+            if (c.type === "address") return <li key={i}><span className="icon-map">&nbsp;</span>{c.value}</li>;
+            if (c.type === "tel") return <li key={i}><span className="icon-phone">&nbsp;</span><a href={`tel:${c.value}`}>{c.value}</a></li>;
+            if (c.type === "web") return <li key={i}><span className="icon-earth">&nbsp;</span><a href={c.value}>{c.value.replace(/(http|https):\/\//, '')}</a></li>;
+            /* if (c.type === "email") */ return <li key={i}><span className="icon-envelope">&nbsp;</span><a href={`mailto:${c.value}`}>{c.value}</a></li>;
           })
         }
         </ul>
