@@ -104,6 +104,9 @@ class App extends Component {
         {sections.map(section => (
           <Section key={section.id} id={section.id} type={section.type} title={section.title} data={section.data} onUpdate={this.handleUpdate} />
         ))}
+        <footer>
+          Made by <a href="https://github.com/themetar" target="_blank">@themetar</a>
+        </footer>
       </div>
     );
   }

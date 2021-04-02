@@ -5,9 +5,10 @@
   --text-color: #381D2A;
 }
 
+* { box-sizing: border-box; }
+
 input,
 textarea {
-  box-sizing: border-box;
   width: 100%;
 }
 
@@ -75,7 +76,10 @@ section {
   padding-left: 3rem;
   padding-right: 3rem;
   padding-top: 1rem;
+  padding-bottom: 2rem;
   color: var(--text-color);
+  min-height: 100vh;
+  position: relative;
 }
 
 .bio-name,
@@ -163,4 +167,10 @@ h2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+}
+
+footer {
+  position: absolute;
+  bottom: .5rem;
+  font-size: .9rem;
 }
