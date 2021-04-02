@@ -1,8 +1,18 @@
 /**/
+:root {
+  --title-color: #BA5624;
+  --header-color: #FFA552;
+  --text-color: #381D2A;
+}
+
 input,
 textarea {
   box-sizing: border-box;
   width: 100%;
+}
+
+input, textarea, select {
+  color: inherit;
 }
 
 textarea {
@@ -65,11 +75,16 @@ section {
   padding-left: 3rem;
   padding-right: 3rem;
   padding-top: 1rem;
+  color: var(--text-color);
 }
 
 .bio-name,
 .bio-about {
   display: block;
+}
+
+.bio-name {
+  color: var(--title-color);
 }
 
 .contact-info {
@@ -87,6 +102,14 @@ section {
   margin-right: 1rem;
 }
 
+.contact-info a {
+  color: var(--link-color);
+}
+
+h2 {
+  color: var(--header-color);
+}
+
 .skills {
   list-style-type: none;
   padding-left: 0;
@@ -97,7 +120,7 @@ section {
   margin: .5rem;
   padding: .5em 1em;
   border-radius: .5em;
-  background-color: black;
+  background-color: var(--title-color);
   color: white;
 }
 
