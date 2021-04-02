@@ -107,6 +107,7 @@ section {
 }
 
 h2 {
+  border-bottom: .2rem solid var(--header-color);
   color: var(--header-color);
 }
 
