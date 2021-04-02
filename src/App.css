@@ -69,6 +69,14 @@ section {
 }
 /**/
 
+a:link {  color: var(--title-color); }
+
+a:visited { color: var(--text-color); }
+
+a:hover { color: var(--header-color); }
+
+a:active { color: var(--title-color); }
+
 .App {
   max-width: 1440px;
   margin: 0 auto;
@@ -104,10 +112,6 @@ section {
 
 .contact-info select {
   margin-right: 1rem;
-}
-
-.contact-info a {
-  color: var(--link-color);
 }
 
 h2 {
