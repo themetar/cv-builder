@@ -18,19 +18,22 @@ class EditActions extends Component {
     return (
       <div className="EditActions">
         {mode === "show" &&
-            <button data-action="edit" onClick={this.handleClick} className="edit-button">
+            <button data-action="edit" onClick={this.handleClick} className="edit-button"
+                    title="Edit">
               <span aria-hidden="true" className="icon-pencil"></span>
               <span className="screen-reader-text">Edit</span>
             </button>
         }
         {mode !== "show" &&
-            <button data-action="save" onClick={this.handleClick} className="edit-button m-b-1/2 pop-in">
+            <button data-action="save" onClick={this.handleClick} className="edit-button m-b-1/2 pop-in"
+                    title="Save">
               <span aria-hidden="true" className="icon-checkmark"></span>
               <span className="screen-reader-text">Save</span>
             </button>
         }
         {mode !== "show" &&
-            <button data-action="cancel" onClick={this.handleClick} className="edit-button pop-in">
+            <button data-action="cancel" onClick={this.handleClick} className="edit-button pop-in"
+                    title="Cancel">
               <span aria-hidden="true" className="icon-undo"></span>
               <span className="screen-reader-text">Cancel</span>
             </button>
