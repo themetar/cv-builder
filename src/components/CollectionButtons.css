@@ -4,6 +4,12 @@
   align-items: center;
 }
 
+.CollectionButtons button { transition: box-shadow 200ms ease-in-out; }
+
+.CollectionButtons button:hover {
+  box-shadow: 0 .2rem .4rem -.2rem black;
+}
+
 .plus-btn {
   width: 4rem;
   height: 4rem;

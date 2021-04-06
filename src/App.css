@@ -183,7 +183,7 @@ h2 {
   color: white;
   border-radius: .5rem;
   border: .1em solid var(--header-color);
-  box-shadow: 0 0 .6em rgba(127, 127, 127, .5),
+  box-shadow: 0 0 .4rem rgba(127, 127, 127, .9),
               0 .6em .6em -.6em rgba(127, 127, 127, .8);
 }
 
