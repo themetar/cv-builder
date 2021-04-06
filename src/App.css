@@ -3,6 +3,7 @@
   --title-color: #BA5624;
   --header-color: #FFA552;
   --text-color: #381D2A;
+  --tag-color: #79B4A9;
 }
 
 * { box-sizing: border-box; }
@@ -129,7 +130,7 @@ h2 {
   margin: .5rem;
   padding: .5em 1em;
   border-radius: .5em;
-  background-color: var(--title-color);
+  background-color: var(--tag-color);
   color: white;
 }
 
@@ -173,8 +174,39 @@ h2 {
   gap: 1rem;
 }
 
+.print-btn {
+  display: block;
+  margin: 0 auto;
+  font-size: 1.5rem;
+  padding: .25em .5em;
+  background-color: var(--title-color);
+  color: white;
+  border-radius: .5rem;
+  border: .1em solid var(--header-color);
+  box-shadow: 0 0 .6em rgba(127, 127, 127, .5),
+              0 .6em .6em -.6em rgba(127, 127, 127, .8);
+}
+
+.print-btn:hover {
+  background-color: var(--text-color);
+  border-color: var(--title-color);
+}
+
 footer {
   position: absolute;
   bottom: .5rem;
   font-size: .9rem;
+}
+
+footer a:link,
+footer a:visited {
+  color: var(--tag-color);
+}
+
+footer a:hover { color: var(--header-color); }
+
+@media print {
+  .print-btn,
+  div.EditActions,
+  footer { display: none; }
 }

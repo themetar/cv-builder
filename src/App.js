@@ -82,6 +82,7 @@ class App extends Component {
     };
 
     this.handleUpdate = this.handleUpdate.bind(this);
+    this.handlePrintButton = this.handlePrintButton.bind(this);
   }
 
   /*
@@ -96,6 +97,13 @@ class App extends Component {
     this.setState({cv: cv});
   }
 
+  /*
+    Click handler for the print button.
+  */
+  handlePrintButton(event) {
+    window.print();
+  }
+
   render() {
     const sections = this.state.cv;
 
@@ -104,6 +112,7 @@ class App extends Component {
         {sections.map(section => (
           <Section key={section.id} id={section.id} type={section.type} title={section.title} data={section.data} onUpdate={this.handleUpdate} />
         ))}
+        <button onClick={this.handlePrintButton} className="print-btn">Print</button>
         <footer>
           Made by <a href="https://github.com/themetar" target="_blank">@themetar</a>
         </footer>
