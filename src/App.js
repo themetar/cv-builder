@@ -13,20 +13,20 @@ class App extends Component {
           type: "personal",
           id: "personal",
           data: {
-            name: "Your Name",
-            about: "About yourself",
+            name: "Harry James Potter",
+            about: "Wizard. Head of the Department of Magical Law Enforcement. The boy who lived.",
             contactList: [
               {
-                type: "email", value: "user@example.org",
+                type: "email", value: "hpotter@mom.gov.mag",
               },
               {
-                type: "address", value: "East Street 100, SW",
+                type: "address", value: "Some Street 100, London, England, Great Britain",
               },
               {
                 type: "tel", value: "555-666-444",
               },
               {
-                type: "web", value: "http://example.org",
+                type: "web", value: "https://harrypotter.fandom.com/wiki/Harry_Potter",
               },
             ],
           },
@@ -36,8 +36,11 @@ class App extends Component {
           id: "skills",
           title: "Skills",
           data: [
-            "Web development",
-            "Brick-laying",
+            "Defence against Dark Arts",
+            "Advanced broomstick piloting",
+            "Care of Magical Animals",
+            "Parseltongue",
+            "MS Office",
           ],
         },
         {
@@ -46,10 +49,10 @@ class App extends Component {
           title: "Education",
           data: [
             {
-              from: "2016",
-              until: "2020",
-              where: "School Name",
-              what: "Degree title",
+              from: "1991",
+              until: "1997",
+              where: "Hogwarts School of Witchcraft and Wizardry",
+              what: "Graduate",
             },
           ]
         },
@@ -59,11 +62,18 @@ class App extends Component {
           title: "Work",
           data: [
             {
-              from: "2018",
-              until: "2019",
-              where: "Business Company",
-              what: "Intern",
-              description: "Doing business",
+              from: "2017",
+              until: "",
+              where: "British Ministry of Magic",
+              what: "Head of the Department of Magical Law Enforcement",
+              description: "Oversees all operations of all subsections of the Department",
+            },
+            {
+              from: "2007",
+              until: "2016",
+              where: "British Ministry of Magic",
+              what: "Auror",
+              description: "Revolutionised the Auror Department at the Ministry of Magic",
             },
           ]
         },
@@ -73,8 +83,8 @@ class App extends Component {
           title: "Other Skills",
           data: [
             {
-              topic: "Bilingual",
-              details: "I speak Italian"
+              topic: "Quidditch",
+              details: "Won two Quidditch cups."
             },
           ]
         },
