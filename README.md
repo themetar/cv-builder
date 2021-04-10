@@ -1,6 +1,13 @@
 # CV Builder
 
-Client-side app for editing and formatting CVs. Built using React.
+Client-side app for editing and prettily displaying CVs. Built using React.
+
+## Topics
+
+* Components
+* Props
+* State
+* Callbacks
 
 ## Running locally
 
