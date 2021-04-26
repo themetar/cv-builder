@@ -1,23 +1,40 @@
-import {Component} from "react";
 import AddRemoveBtns from "../CollectionButtons";
 
 /*
   Displays a collection of topics and information about them
 */
-class OtherSkills extends Component {
-  constructor(props) {
-    super(props);
+function OtherSkills(props) {
+  const {data, mode} = props;
 
-    this.handleAdd = this.handleAdd.bind(this);
-    this.handleRemove = this.handleRemove.bind(this);
-
-    this.inputHandlers = [];
-
-    this.editMap = this.editMap.bind(this);
+  function handleInput(index, field, event) {
+    const data = props.data.slice();
+    data[index][field] = event.target.value;
+    props.onChange(data);
   }
 
-  handleAdd() {
-    const data = this.props.data.slice(); // copy array
+  const showMap = (skill, index) => {
+    return (
+      <div key={index}>
+        <h3>{skill.topic}</h3>
+        <p>{skill.details}</p>
+      </div>
+    );
+  };
+
+  const editMap = (skill, index) => {
+    const handleTopic =   handleInput.bind(null, index, "topic");
+    const handleDetails = handleInput.bind(null, index, "details");
+
+    return (
+      <div key={index}>
+        <input type="text" value={skill.topic} onChange={handleTopic} className="m-b-1/2" />
+        <textarea value={skill.details} onChange={handleDetails}/>
+      </div>
+    );
+  };
+
+  function handleAdd() {
+    const data = props.data.slice(); // copy array
 
     // add new entry
     data.push({
@@ -26,74 +43,35 @@ class OtherSkills extends Component {
     });
 
     // send data
-    this.props.onChange(data);
+    props.onChange(data);
   }
 
-  handleRemove() {
-    const data = this.props.data.slice(); // copy array
+  function handleRemove() {
+    const data = props.data.slice(); // copy array
     
     if (data.length > 1) {
       // remove last
       data.pop();
       // send data
-      this.props.onChange(data);
+      props.onChange(data);
     }
   }
 
-  handleInput(index, field, event) {
-    const data = this.props.data.slice();
-    data[index][field] = event.target.value;
-    this.props.onChange(data);
-  }
-
-  render() {
-    const {data, mode} = this.props;
-
-    // add handlers if needed
-    for(var i = this.inputHandlers.length; i < data.length; i++) {
-      this.inputHandlers.push({
-        handleTopic:   this.handleInput.bind(this, i, "topic"),
-        handleDetails:  this.handleInput.bind(this, i, "details"),
-      });
-    }
-
-    // remove handlers if extra
-    this.inputHandlers.splice(data.length, this.inputHandlers.length - data.length);
-
-    return (
-      <div className="OtherSkills">
-        <div className="grid m-b-2">
-        {
-          mode === "show" && data.map(this.showMap)
-        }
-        {
-          mode === "edit" && data.map(this.editMap)
-        }
-        </div>
-        {mode === "edit" && (
-          <AddRemoveBtns handleAdd={this.handleAdd} handleRemove={this.handleRemove} count={data.length} />
-        )}
+  return (
+    <div className="OtherSkills">
+      <div className="grid m-b-2">
+      {
+        mode === "show" && data.map(showMap)
+      }
+      {
+        mode === "edit" && data.map(editMap)
+      }
       </div>
-    );
-  }
-
-  showMap(skill, index) {
-    return (
-      <div key={index}>
-        <h3>{skill.topic}</h3>
-        <p>{skill.details}</p>
-      </div>
-    );
-  }
-
-  editMap(skill, index) {
-    return (
-      <div key={index}>
-        <input type="text" value={skill.topic} onChange={this.inputHandlers[index].handleTopic} className="m-b-1/2" />
-        <textarea value={skill.details} onChange={this.inputHandlers[index].handleDetails}/>
-      </div>
-    );
-  }
+      {mode === "edit" && (
+        <AddRemoveBtns handleAdd={handleAdd} handleRemove={handleRemove} count={data.length} />
+      )}
+    </div>
+  );  
 }
 
 export default OtherSkills;
