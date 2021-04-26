@@ -1,29 +1,20 @@
-import {Component} from "react";
 import AddRemoveBtns from "../CollectionButtons";
 
 /*
   Renders a history of time periods.
   Each entry has a start year, an end year, location, title, and an optional description text.
 */
-class Chronicle extends Component {
-  constructor(props) {
-    super(props);
+function Chronicle(props) {
 
-    this.inputHandlers = [];
-
-    this.handleAdd = this.handleAdd.bind(this);
-    this.handleRemove = this.handleRemove.bind(this);
-  }
-
-  handleChange(index, field, event) {
-    const data = this.props.data.slice(); // copy array
+  function handleChange(index, field, event) {
+    const data = props.data.slice(); // copy array
     data[index] = {...data[index]}; // copy entry
     data[index][field] = event.target.value; // change field
-    this.props.onChange(data);
+    props.onChange(data);
   }
 
-  handleAdd() {
-    const data = this.props.data.slice(); // copy array
+  function handleAdd() {
+    const data = props.data.slice(); // copy array
 
     const year = (new Date()).getFullYear();
 
@@ -37,52 +28,25 @@ class Chronicle extends Component {
     });
 
     // send data
-    this.props.onChange(data);
+    props.onChange(data);
   }
 
-  handleRemove() {
-    const data = this.props.data.slice(); // copy array
+  function handleRemove() {
+    const data = props.data.slice(); // copy array
     if (data.length > 1) {
       data.pop(); // remove last
       // send data
-      this.props.onChange(data);
+      props.onChange(data);
     }
   }
 
-  render() {
-    const {mode} = this.props;
-    const entries = this.props.data;
-
-    // add handlers if needed
-    for(var i = this.inputHandlers.length; i < entries.length; i++) {
-      this.inputHandlers.push({
-        handleFrom:   this.handleChange.bind(this, i, "from"),
-        handleUntil:  this.handleChange.bind(this, i, "until"),
-        handleWhere:  this.handleChange.bind(this, i, "where"),
-        handleWhat:   this.handleChange.bind(this, i, "what"),
-        handleDescription:   this.handleChange.bind(this, i, "description"),
-      });
-    }
-
-    // remove handlers if extra
-    this.inputHandlers.splice(entries.length, this.inputHandlers.length - entries.length);
-
-    const mapFunc = mode === "show" ? this.mapShow : this.mapEdit;
-
-    return (
-      <div>
-        {entries.map(mapFunc)}
-        {mode === "edit" && (
-          <AddRemoveBtns handleAdd={this.handleAdd} handleRemove={this.handleRemove} count={entries.length} />
-        )}
-      </div>
-    );
-  }
+  const {mode} = props;
+  const entries = props.data;
 
   /*
     Render show elements
   */
-  mapShow = (entry, index) => {
+  const mapShow = (entry, index) => {
     const {from, until, where, what, description} = entry;
 
     return (
@@ -103,10 +67,15 @@ class Chronicle extends Component {
   /*
     Render edit elements
   */
-  mapEdit = (entry, index) => {
+  const mapEdit = (entry, index) => {
     const {from, until, where, what, description} = entry;
 
-    const {handleFrom, handleUntil, handleWhere, handleWhat, handleDescription} = this.inputHandlers[index];
+    const handleFrom  =   handleChange.bind(this, index, "from");
+    const handleUntil =   handleChange.bind(this, index, "until");
+    const handleWhere =   handleChange.bind(this, index, "where");
+    const handleWhat  =   handleChange.bind(this, index, "what");
+    const handleDescription =   handleChange.bind(this, index, "description");
+
 
     return (
       <div key={index} className="chrono-entry">
@@ -119,7 +88,18 @@ class Chronicle extends Component {
         <input type="text" value={description} placeholder="Optional details" onChange={handleDescription}/>
       </div>
     );
-  }
+  };
+
+  const mapFunc = mode === "show" ? mapShow : mapEdit;
+
+  return (
+    <div>
+      {entries.map(mapFunc)}
+      {mode === "edit" && (
+        <AddRemoveBtns handleAdd={handleAdd} handleRemove={handleRemove} count={entries.length} />
+      )}
+    </div>
+  );
 }
 
 export default Chronicle;
