@@ -1,81 +1,72 @@
-import {Component} from "react";
 import Personal from "./sections/Personal";
 import Skills from "./sections/Skills";
 import OtherSkills from "./sections/OtherSkills";
 import Chronicle from "./sections/Chronicle";
 import EditActions from "./EditActions";
+import { useState } from "react";
 
 /*
   Renders a CV section, depending on section type. Manages the edit actions (edit, save, delete..) input.
 */
-class Section extends Component {
-  constructor(props) {
-    super(props);
-    
-    /*
-      State holds a copy of it's section data. This is the working copy that gets modified in edit mode.
-      The local state data gets sent upwards on save, and discarded on cancel.
-    */
-    this.state = {
-      mode: "show",
-      data: props.data,
-    };
-
-    this.handleAction = this.handleAction.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
+function Section(props) {
+  
+  /*
+    State holds a copy of it's section data. This is the working copy that gets modified in edit mode.
+    The local state data gets sent upwards on save, and discarded on cancel.
+  */
+  
+  const [mode, setMode] = useState("show");
+  const [data, setData] = useState(props.data);  
 
   /*
     Callback for the EditActions component
 
     action - "edit" | "cancel" | "save" | "delete"
   */
-  handleAction(action) {
-    const {onUpdate} = this.props;
-    const {id} = this.props;
+  const handleAction = (action) => {
+    const {id, onUpdate} = props;
 
     if (action === "edit") {
       // change the display mode to editing
-      this.setState({mode: "edit"});
+      setMode("edit");
     }
     if (action === "cancel") {
-      // change the display mode to showing, and
-      // reset state data
-      this.setState({mode: "show", data: this.props.data});
+      // change the display mode to showing,
+      setMode("show");
+      // and reset state data
+      setData(props.data);
     }
     if (action === "save") {
       // change the display mode to showing
-      this.setState({mode: "show"});
+      setMode("show");
       /* send state data to parent component,
          where it will be merged with rest of the CV,
          and passed back down as prop */
-      onUpdate(id, this.state.data);
+      onUpdate(id, data);
     }
   }
 
   /*
     User input callback. Updates local state with user's input.
   */
-  handleChange(newData) {
-    this.setState({data: newData});
+  const handleChange = (newData) => {
+    setData(newData);
   }
 
-  render() {
-    const {mode} = this.state
-    const {type, title} = this.props;
-    const {data} = mode === "show" ? this.props : this.state;
+  
+  const {type, title} = props;
+  const renderData = mode === "show" ? props.data : data;
 
-    return (
-      <section>
-        {title && <h2>{title}</h2>}
-        {type === "personal" && <Personal data={data} mode={mode} onChange={this.handleChange} />}
-        {type === "skills" && <Skills data={data} mode={mode} onChange={this.handleChange} />}
-        {type === "chronicle" && <Chronicle data={data} mode={mode} onChange={this.handleChange} />}
-        {type === "otherSkills" && <OtherSkills data={data} mode={mode} onChange={this.handleChange} />}
-        <EditActions mode={mode} onAction={this.handleAction}/>
-      </section>
-    );
-  }
+  return (
+    <section>
+      {title && <h2>{title}</h2>}
+      {type === "personal" && <Personal data={renderData} mode={mode} onChange={handleChange} />}
+      {type === "skills" && <Skills data={renderData} mode={mode} onChange={handleChange} />}
+      {type === "chronicle" && <Chronicle data={renderData} mode={mode} onChange={handleChange} />}
+      {type === "otherSkills" && <OtherSkills data={renderData} mode={mode} onChange={handleChange} />}
+      <EditActions mode={mode} onAction={handleAction}/>
+    </section>
+  );
 }
 
 export default Section;
