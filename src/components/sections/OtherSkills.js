@@ -8,6 +8,7 @@ function OtherSkills(props) {
 
   function handleInput(index, field, event) {
     const data = props.data.slice();
+    data[index] = {...data[index]}; // copy object
     data[index][field] = event.target.value;
     props.onChange(data);
   }
