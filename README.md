@@ -11,12 +11,12 @@ Client-side app for editing and prettily displaying CVs. Built using React.
 
 ## Running locally
 
-Download or clone, then run `yarn start`.
+Prerequisites: nodejs (v18.18.0 or up).
 
-## Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Download or clone, install packages with `npm install`, then run `npm run dev`.
 
 ## Origin
 
 Part of the coursework for [The Odin Project](https://www.theodinproject.com/about).
+
+This project was originally bootstrapped with [Create React App](https://github.com/facebook/create-react-app), but now uses [Vite](https://vitejs.dev/)
