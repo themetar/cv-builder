@@ -5,7 +5,7 @@
   "private": true,
   "homepage": "https://themetar.github.io/cv-builder",
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "npm run build -- --base /cv-builder/",
     "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
